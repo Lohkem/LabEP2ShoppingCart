@@ -89,4 +89,15 @@ public class ShoppingCart {
     	writer.flush();
     	writer.close();
     }
+    
+    public boolean findProduct(String title){
+        Iterator<Product> i = _items.iterator();
+        while(i.hasNext())
+        {
+            Product p = (Product)i.next();
+            if(p.getTitle().equalsIgnoreCase(title))
+                return true;
+        }
+        return false;
+    }
 }
