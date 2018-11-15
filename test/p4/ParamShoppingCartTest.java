@@ -6,20 +6,31 @@
 package p4;
 
 import java.io.Writer;
+import java.util.Arrays;
+import java.util.Collection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 /**
  *
- * @author Lokem
+ * @author Olivier
  */
-public class ShoppingCartTest {
-    
-    public ShoppingCartTest() {
+
+@RunWith(Parameterized.class)
+public class ParamShoppingCartTest {
+    double precio1;
+    double precio2;
+            
+    public ParamShoppingCartTest(double pr1, double pr2) {
+        
+        precio1 = pr1;
+        precio2 = pr2;        
     }
     
     @BeforeClass
@@ -38,22 +49,37 @@ public class ShoppingCartTest {
     public void tearDown() {
     }
 
-    /**
+   // Each parameter should be placed as an argument here
+   // Every time runner triggers, it will pass the arguments
+   // from parameters we defined in differentProducts() method
+	
+   @Parameterized.Parameters
+   public static Collection differentProducts() {
+      return Arrays.asList(new Object[][] {
+         { 1250, 2500 },
+         { 35, 20 },
+         { 3.9, 1.5 },
+         { 12, 4.3 },
+         { 24, 25 }
+      });
+   }
+    
+     /**
      * Test of getBalance method, of class ShoppingCart.
      */
     @Test
     public void testGetBalance() {
         System.out.println("getBalance");
-        Product p1 = new Product("phone", 360);
-        Product p2 = new Product("computer", 1000);
-        Product p3 = new Product("drink", 1.5);
+        Product p1 = new Product("phone", precio1);
+        Product p2 = new Product("computer", precio2);
+        Product p3 = new Product("drink", precio1 + precio2);
         ShoppingCart instance = new ShoppingCart();
         double result = instance.getBalance();
         assertEquals(0.0, result, 0.0);
         instance.addItem(p1);
         instance.addItem(p2);
         instance.addItem(p3);
-        double expResult = 1361.5;
+        double expResult = 2*(precio1 + precio2);
         result = instance.getBalance();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
@@ -80,16 +106,12 @@ public class ShoppingCartTest {
      */
     @Test
     public void testRemoveItem() throws Exception {
-        System.out.println("removeItem");
+        /*System.out.println("removeItem");
         Product p = null;
         ShoppingCart instance = new ShoppingCart();
-        try{
-            instance.addItem(p);
-            instance.removeItem(p);
-        }catch(ProductNotFoundException e){
-            fail("El metodo testRemove no funciona correctamente.");
-        }
-                  
+        instance.removeItem(p);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");*/
     }
 
     /**
@@ -97,22 +119,13 @@ public class ShoppingCartTest {
      */
     @Test
     public void testGetItemCount() {
-        System.out.println("getItemCount");
+        /*System.out.println("getItemCount");
         ShoppingCart instance = new ShoppingCart();
         int expResult = 0;
         int result = instance.getItemCount();
         assertEquals(expResult, result);
-        
-        for(int i = 0; i < 3; i++)
-        {
-            Product p = null;
-            instance.addItem(p);
-            expResult += 1;
-        }
-        result = instance.getItemCount();
-        
-        if(expResult != result)
-            fail("Metodo getItemCount no esta funcionando correctamente");
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");*/
     }
 
     /**
@@ -170,7 +183,7 @@ public class ShoppingCartTest {
     @Test
     public void testFindProduct() {
         System.out.println("findProduct");
-        Product p = new Product("phone", 360);
+        Product p = new Product("phone", precio1);
         ShoppingCart instance = new ShoppingCart();
         instance.addItem(p);
         assertFalse(instance.findProduct("car"));
@@ -185,44 +198,10 @@ public class ShoppingCartTest {
     @Test
     public void testAddItemFindProduct() {
         System.out.println("addItemfindProduct");
-        Product p = new Product("phone", 360);
+        Product p = new Product("phone", precio1);
         ShoppingCart instance = new ShoppingCart();
         assertFalse(instance.findProduct("phone"));
         instance.addItem(p);
         assertTrue(instance.findProduct("phone"));
-    }
-    
-    @Test
-    public void testRemoveItem2() throws Exception {
-        System.out.println("removeItem2");
-        Product p = null;
-        ShoppingCart instance = new ShoppingCart();
-        try{
-            instance.addItem(p);
-            instance.removeItem(p);
-        }catch(ProductNotFoundException e){
-            fail("El metodo testRemove no funciona correctamente.");
-        }
-        assertTrue(instance.isEmpty());
-    }
-    
-    @Test
-    public void testRemoveItemCarroVacio() throws Exception {
-        System.out.println("removeItemCarroVacio");
-        Product p = null;
-        ShoppingCart instance = new ShoppingCart();
-        try{
-            instance.removeItem(p);
-            fail("no salto la excepcion");
-        }catch(ProductNotFoundException e){
-        }
-    }
-    
-    @Test
-    public void testShoppingCart() {
-        System.out.println("Constructor ShoppingCart");
-        ShoppingCart instance = new ShoppingCart();
-        assertTrue(instance.isEmpty());
-        assertEquals(instance.getItemCount(), 0);
     }
 }
