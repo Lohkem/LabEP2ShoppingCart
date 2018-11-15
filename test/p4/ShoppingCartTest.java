@@ -80,12 +80,16 @@ public class ShoppingCartTest {
      */
     @Test
     public void testRemoveItem() throws Exception {
-        /*System.out.println("removeItem");
+        System.out.println("removeItem");
         Product p = null;
         ShoppingCart instance = new ShoppingCart();
-        instance.removeItem(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");*/
+        try{
+            instance.addItem(p);
+            instance.removeItem(p);
+        }catch(ProductNotFoundException e){
+            fail("El metodo testRemove no funciona correctamente.");
+        }
+                  
     }
 
     /**
@@ -93,13 +97,22 @@ public class ShoppingCartTest {
      */
     @Test
     public void testGetItemCount() {
-        /*System.out.println("getItemCount");
+        System.out.println("getItemCount");
         ShoppingCart instance = new ShoppingCart();
         int expResult = 0;
         int result = instance.getItemCount();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");*/
+        
+        for(int i = 0; i < 3; i++)
+        {
+            Product p = null;
+            instance.addItem(p);
+            expResult += 1;
+        }
+        result = instance.getItemCount();
+        
+        if(expResult != result)
+            fail("Metodo getItemCount no esta funcionando correctamente");
     }
 
     /**
@@ -167,5 +180,39 @@ public class ShoppingCartTest {
         assertFalse(instance.findProduct("phone"));
         instance.addItem(p);
         assertTrue(instance.findProduct("phone"));
+    }
+    
+    @Test
+    public void testRemoveItem2() throws Exception {
+        System.out.println("removeItem2");
+        Product p = null;
+        ShoppingCart instance = new ShoppingCart();
+        try{
+            instance.addItem(p);
+            instance.removeItem(p);
+        }catch(ProductNotFoundException e){
+            fail("El metodo testRemove no funciona correctamente.");
+        }
+        assertTrue(instance.isEmpty());
+    }
+    
+    @Test
+    public void testRemoveItemCarroVacio() throws Exception {
+        System.out.println("removeItemCarroVacio");
+        Product p = null;
+        ShoppingCart instance = new ShoppingCart();
+        try{
+            instance.removeItem(p);
+            fail("no salto la excepcion");
+        }catch(ProductNotFoundException e){
+        }
+    }
+    
+    @Test
+    public void testShoppingCart() {
+        System.out.println("Constructor ShoppingCart");
+        ShoppingCart instance = new ShoppingCart();
+        assertTrue(instance.isEmpty());
+        assertEquals(instance.getItemCount(), 0);
     }
 }
