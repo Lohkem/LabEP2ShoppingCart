@@ -82,8 +82,6 @@ public class ParamShoppingCartTest {
         double expResult = 2*(precio1 + precio2);
         result = instance.getBalance();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        /*fail("The test case is a prototype.");*/
     }
 
     /**
@@ -97,8 +95,6 @@ public class ParamShoppingCartTest {
         assertEquals(instance.getItemCount(), 0);
         instance.addItem(p);
         assertEquals(instance.getItemCount(), 1);
-        // TODO review the generated test code and remove the default call to fail.
-        /*fail("The test case is a prototype.");*/
     }
 
     /**
@@ -106,12 +102,16 @@ public class ParamShoppingCartTest {
      */
     @Test
     public void testRemoveItem() throws Exception {
-        /*System.out.println("removeItem");
+        System.out.println("removeItem");
         Product p = null;
         ShoppingCart instance = new ShoppingCart();
-        instance.removeItem(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");*/
+        try{
+            instance.addItem(p);
+            instance.removeItem(p);
+        }catch(ProductNotFoundException e){
+            fail("El metodo testRemove no funciona correctamente.");
+        }
+                  
     }
 
     /**
@@ -119,13 +119,22 @@ public class ParamShoppingCartTest {
      */
     @Test
     public void testGetItemCount() {
-        /*System.out.println("getItemCount");
+        System.out.println("getItemCount");
         ShoppingCart instance = new ShoppingCart();
         int expResult = 0;
         int result = instance.getItemCount();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");*/
+        
+        for(int i = 0; i < 3; i++)
+        {
+            Product p = null;
+            instance.addItem(p);
+            expResult += 1;
+        }
+        result = instance.getItemCount();
+        
+        if(expResult != result)
+            fail("Metodo getItemCount no esta funcionando correctamente");
     }
 
     /**
@@ -135,9 +144,6 @@ public class ParamShoppingCartTest {
     public void testEmpty() {
         System.out.println("empty");
         ShoppingCart instance = new ShoppingCart();
-        /*instance.empty();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");*/
         Product p = null;
         assertTrue(instance.isEmpty());
         instance.addItem(p);
@@ -153,11 +159,6 @@ public class ParamShoppingCartTest {
     public void testIsEmpty() {
         System.out.println("isEmpty");
         ShoppingCart instance = new ShoppingCart();
-        /*boolean expResult = false;
-        boolean result = instance.isEmpty();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");*/
         Product p = null;
         assertTrue(instance.isEmpty());
         instance.addItem(p);
@@ -188,8 +189,6 @@ public class ParamShoppingCartTest {
         instance.addItem(p);
         assertFalse(instance.findProduct("car"));
         assertTrue(instance.findProduct("phone"));
-        /*// TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");*/
     }
     
     /**
