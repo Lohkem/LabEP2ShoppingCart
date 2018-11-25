@@ -3,19 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/Lokem/Documents/GitHub/LabEP2ShoppingCart/test/p4/ShoppingCartTest.java</file>
+            <file>file:/D:/Lokem/Documents/GitHub/LabEP2ShoppingCart/test/p4/ParamShoppingCartTest.java</file>
             <file>file:/D:/Lokem/Documents/GitHub/LabEP2ShoppingCart/src/p4/ShoppingCart.java</file>
             <file>file:/D:/Lokem/Documents/GitHub/LabEP2ShoppingCart/src/p4/ProductNotFoundException.java</file>
             <file>file:/D:/Lokem/Documents/GitHub/LabEP2ShoppingCart/src/p4/Product.java</file>
             <file>file:/D:/Lokem/Documents/GitHub/LabEP2ShoppingCart/test/p4/ProductTest.java</file>
-=======
-            <file>file:/C:/Users/alumno/Documents/GitHub/LabEP2ShoppingCart/src/p4/ShoppingCart.java</file>
-            <file>file:/C:/Users/alumno/Documents/GitHub/LabEP2ShoppingCart/test/p4/ShoppingCartTest.java</file>
-            <file>file:/C:/Users/alumno/Documents/GitHub/LabEP2ShoppingCart/src/p4/Product.java</file>
-            <file>file:/C:/Users/alumno/Documents/GitHub/LabEP2ShoppingCart/test/p4/ParamShoppingCartTest.java</file>
-            <file>file:/C:/Users/alumno/Documents/GitHub/LabEP2ShoppingCart/test/p4/ProductTest.java</file>
->>>>>>> e13928afac470e76750795b46d5038ccf2f67bdd
         </group>
     </open-files>
 </project-private>
